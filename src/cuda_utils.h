@@ -1,0 +1,24 @@
+/*
+ * @Author: Touzi
+ * @Email: wwwtouzi@outlook.com
+ * @Description: 从 NVIDIA TensorRT 官方示例复制
+ * @Date: 2026-05-30 12:03:29
+ */
+#ifndef TRTX_CUDA_UTILS_H_
+#define TRTX_CUDA_UTILS_H_
+
+#include <cuda_runtime_api.h>
+
+#ifndef CUDA_CHECK
+#define CUDA_CHECK(callstr)                                                                    \
+    {                                                                                          \
+        cudaError_t error_code = callstr;                                                      \
+        if (error_code != cudaSuccess)                                                         \
+        {                                                                                      \
+            std::cerr << "CUDA error " << error_code << " at " << __FILE__ << ":" << __LINE__; \
+            assert(0);                                                                         \
+        }                                                                                      \
+    }
+#endif // CUDA_CHECK
+
+#endif // TRTX_CUDA_UTILS_H_
